@@ -1,0 +1,107 @@
+:root {
+    --bg-color: #ffffff;
+    --text-main: #111111;
+    --text-muted: #888888;
+    --line-color: #e5e5e5;
+    --clip-color: #f0f0f0;
+    --active-color: #111111;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans", "ヒラギノ角ゴ ProN", sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 540px;
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+/* トラックリストのスタイル */
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.track-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.track-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.track-num-badge {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.track-title-text {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+}
+
+.track-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ボタン（既存の.action-btnのスタイルを継承） */
+.action-btn {
+    font-size: 0.65rem;
+    border: none;
+    border-bottom: 1px solid transparent;
+    padding: 4px 0;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover, .action-btn.active {
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
+}
+
+.play-btn {
+    font-weight: bold;
+    min-width: 40px;
+}
