@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>絵画を聴く — Exhibition Sound Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー：既存のデザインを引き継いだミニマルなタイポグラフィ -->
+        <header style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 50px;">
+            <h1 style="margin: 0; font-size: 1.15rem; font-weight: 400; letter-spacing: 0.25em; color: var(--text-main);">
+                絵画を聴く
+            </h1>
+            <div style="font-size: 0.65rem; font-weight: 300; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase;">
+                Exhibition Sound Archive
+            </div>
+        </header>
+
+        <!-- セットリストセクション -->
+        <div class="section">
+            <div class="section-title">Sound Tracklist</div>
+            <div class="track-list" id="archive-playlist">
+                <!-- JavaScriptから音源リストが動的に挿入されます -->
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <footer style="margin-top: 80px; text-align: center; border-top: 1px solid var(--line-color); padding-top: 30px;">
+            <div style="font-size: 0.55rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase;">
+                &copy; Jumpei Kaneko All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
