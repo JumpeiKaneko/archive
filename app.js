@@ -1,11 +1,12 @@
 // アーカイブ公開する6つの音源リスト（指定の順序：6, 5, 4, 2, 1, 3）
+// ※もし実際の画像が「6.JPEG」のように大文字なら、ここを .JPEG に変更してください
 const ARCHIVE_TRACKS = [
-    { id: "archive_06", fileName: "6.mp3", imageName: "6.jpg" },
-    { id: "archive_05", fileName: "5.mp3", imageName: "5.jpg" },
-    { id: "archive_04", fileName: "4.mp3", imageName: "4.jpg" },
-    { id: "archive_02", fileName: "2.mp3", imageName: "2.jpg" },
-    { id: "archive_01", fileName: "1.mp3", imageName: "1.jpg" },
-    { id: "archive_03", fileName: "3.mp3", imageName: "3.jpg" }
+    { id: "archive_06", fileName: "6.mp3", imageName: "6.jpeg" },
+    { id: "archive_05", fileName: "5.mp3", imageName: "5.jpeg" },
+    { id: "archive_04", fileName: "4.mp3", imageName: "4.jpeg" },
+    { id: "archive_02", fileName: "2.mp3", imageName: "2.jpeg" },
+    { id: "archive_01", fileName: "1.mp3", imageName: "1.jpeg" },
+    { id: "archive_03", fileName: "3.mp3", imageName: "3.jpeg" }
 ];
 
 let audioCtx = null;
@@ -35,12 +36,12 @@ function buildPlaylist() {
 
         const item = document.createElement('div');
         item.className = 'track-item';
-        // ★修正点：画像の取得パスを assets/ 直下に合わせました
+        // 正しいフォルダ階層（assets/images/）に修正しました
         item.innerHTML = `
             <div class="track-left-block">
                 <!-- トラックごとの画像アイコン -->
                 <div class="track-image-wrapper">
-                    <img src="assets/${track.imageName}" alt="" class="track-icon-img">
+                    <img src="assets/images/${track.imageName}" alt="" class="track-icon-img">
                 </div>
             </div>
             <div class="track-controls">
@@ -77,9 +78,9 @@ async function toggleTrackPlayback(track, playButton) {
         playButton.style.opacity = "0.5";
 
         try {
-            // キャッシュがない場合のみ新規に音声ファイルをロードしてデコード
+            // 正しいフォルダ階層（assets/sounds/）から音源をロード
             if (!track.buffer) {
-                const response = await fetch(`assets/${track.fileName}`);
+                const response = await fetch(`assets/sounds/${track.fileName}`);
                 if (!response.ok) throw new Error("音源データの取得に失敗しました");
                 const arrayBuffer = await response.arrayBuffer();
                 track.buffer = await audioCtx.decodeAudioData(arrayBuffer);
