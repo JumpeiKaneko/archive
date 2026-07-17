@@ -55,6 +55,33 @@ body {
     justify-content: space-between;
     padding: 20px 0;
     border-bottom: 1px solid var(--line-color);
+    gap: 20px;
+}
+
+/* 画像と情報を横並びにするためのブロック */
+.track-left-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+/* 画像アイコンの外枠（正方形を維持） */
+.track-image-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--clip-color);
+    flex-shrink: 0;
+}
+
+/* 画像自体のトリミング設定 */
+.track-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .track-info-block {
