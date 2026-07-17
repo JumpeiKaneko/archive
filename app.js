@@ -35,6 +35,7 @@ function buildPlaylist() {
 
         const item = document.createElement('div');
         item.className = 'track-item';
+        // ★修正点：画像の取得パスを assets/ 直下に合わせました
         item.innerHTML = `
             <div class="track-left-block">
                 <!-- トラックごとの画像アイコン -->
