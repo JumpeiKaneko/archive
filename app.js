@@ -1,5 +1,5 @@
 // アーカイブ公開する6つの音源リスト（指定の順序：6, 5, 4, 2, 1, 3）
-// ※もし実際の画像が「6.JPEG」のように大文字なら、ここを .JPEG に変更してください
+// Finderの表記に合わせて拡張子をすべて小文字の .jpeg に統一しました
 const ARCHIVE_TRACKS = [
     { id: "archive_06", fileName: "6.mp3", imageName: "6.jpeg" },
     { id: "archive_05", fileName: "5.mp3", imageName: "5.jpeg" },
@@ -10,7 +10,7 @@ const ARCHIVE_TRACKS = [
 ];
 
 let audioCtx = null;
-let currentPlayingTrack = null; // 現在再生中のトラックを管理
+let currentPlayingTrack = null;
 
 // 音声処理システム（Web Audio API）の初期化
 async function initAudioContext() {
@@ -28,7 +28,6 @@ function buildPlaylist() {
     playlistContainer.innerHTML = "";
 
     ARCHIVE_TRACKS.forEach(track => {
-        // 各トラックの状態パラメータをセット（デフォルトでループ再生を有効化）
         track.buffer = null;
         track.source = null;
         track.isPlaying = false;
@@ -36,10 +35,9 @@ function buildPlaylist() {
 
         const item = document.createElement('div');
         item.className = 'track-item';
-        // 正しいフォルダ階層（assets/images/）に修正しました
         item.innerHTML = `
             <div class="track-left-block">
-                <!-- トラックごとの画像アイコン -->
+                <!-- 正しいフォルダ階層（assets/images/）を指定 -->
                 <div class="track-image-wrapper">
                     <img src="assets/images/${track.imageName}" alt="" class="track-icon-img">
                 </div>
@@ -66,7 +64,6 @@ function buildPlaylist() {
 
 // 再生と停止の切り替え処理
 async function toggleTrackPlayback(track, playButton) {
-    // 他のトラックがすでに再生している場合は、排他処理として先に止める
     if (currentPlayingTrack && currentPlayingTrack !== track) {
         forceStopTrack(currentPlayingTrack);
     }
@@ -78,21 +75,19 @@ async function toggleTrackPlayback(track, playButton) {
         playButton.style.opacity = "0.5";
 
         try {
-            // 正しいフォルダ階層（assets/sounds/）から音源をロード
             if (!track.buffer) {
+                // 正しいフォルダ階層（assets/sounds/）から音源をロード
                 const response = await fetch(`assets/sounds/${track.fileName}`);
                 if (!response.ok) throw new Error("音源データの取得に失敗しました");
                 const arrayBuffer = await response.arrayBuffer();
                 track.buffer = await audioCtx.decodeAudioData(arrayBuffer);
             }
 
-            // Web Audio ノードを生成して結線
             track.source = audioCtx.createBufferSource();
             track.source.buffer = track.buffer;
             track.source.loop = track.isLooping;
             track.source.connect(audioCtx.destination);
 
-            // ループOFFの状態で最後まで再生しきった場合の終了処理
             track.source.onended = () => {
                 if (!track.source.loop) {
                     track.isPlaying = false;
@@ -136,12 +131,10 @@ function forceStopTrack(track) {
     }
 }
 
-// 読み込み完了時に自動的にリストを構築
 window.addEventListener('DOMContentLoaded', () => {
     buildPlaylist();
 });
 
-// ブラウザが一時停止状態（サスペンド）になった場合のセキュリティ保護解除用
 document.body.addEventListener('click', () => {
     if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
 }, true);
