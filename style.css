@@ -33,19 +33,10 @@ body {
     margin-bottom: 60px;
 }
 
-.section-title {
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    letter-spacing: 0.2em;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-}
-
 /* トラックリストのスタイル */
 .track-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .track-item {
@@ -53,23 +44,22 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 24px 0;
     border-bottom: 1px solid var(--line-color);
     gap: 20px;
 }
 
-/* 画像と情報を横並びにするためのブロック */
+/* 画像を配置するブロック */
 .track-left-block {
     display: flex;
     align-items: center;
-    gap: 16px;
     flex: 1;
 }
 
 /* 画像アイコンの外枠（正方形を維持） */
 .track-image-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     border-radius: 4px;
     overflow: hidden;
     background-color: var(--clip-color);
@@ -84,35 +74,14 @@ body {
     display: block;
 }
 
-.track-info-block {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-align: left;
-}
-
-.track-num-badge {
-    font-size: 0.55rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-}
-
-.track-title-text {
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    color: var(--text-main);
-}
-
 .track-controls {
     display: flex;
     align-items: center;
-    gap: 16px;
 }
 
-/* ボタン（既存の.action-btnのスタイルを継承） */
+/* ボタン */
 .action-btn {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     border: none;
     border-bottom: 1px solid transparent;
     padding: 4px 0;
@@ -120,7 +89,7 @@ body {
     letter-spacing: 0.1em;
     cursor: pointer;
     background: transparent;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .action-btn:hover, .action-btn.active {
@@ -130,5 +99,6 @@ body {
 
 .play-btn {
     font-weight: bold;
-    min-width: 40px;
+    min-width: 50px;
+    text-align: right;
 }
